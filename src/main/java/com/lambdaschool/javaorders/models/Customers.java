@@ -22,8 +22,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Customer")
-public class Customer {
+@Table(name = "Customers")
+public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -40,14 +40,14 @@ public class Customer {
     private String phone;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "customerOrders")
-    private Set<Order> orders;
+    private Set<Orders> orders;
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnore
-    private Agent agentCustomers;
+    private Agents agentCustomers;
 
-    public Customer() {
+    public Customers() {
         // Default Constructor
     }
 
@@ -127,11 +127,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Agent getAgentCustomers() {
+    public Agents getAgentCustomers() {
         return agentCustomers;
     }
 
-    public void setAgentCustomers(Agent agentCustomers) {
+    public void setAgentCustomers(Agents agentCustomers) {
         this.agentCustomers = agentCustomers;
     }
 }

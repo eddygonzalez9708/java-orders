@@ -13,8 +13,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "Agent")
-public class Agent {
+@Table(name = "Agents")
+public class Agents {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -27,12 +27,12 @@ public class Agent {
     private String country;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentCustomers")
-    private Set<Customer> customers;
+    private Set<Customers> customers;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentOrders")
-    private Set<Order> orders;
+    private Set<Orders> orders;
 
-    public Agent() {
+    public Agents() {
         // Default Constructor
     }
 

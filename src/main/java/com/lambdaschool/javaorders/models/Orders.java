@@ -14,8 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Order")
-public class Order {
+@Table(name = "Orders")
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -28,14 +28,14 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "custcode", nullable = false)
     @JsonIgnore
-    private Customer customerOrders;
+    private Customers customerOrders;
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnore
-    private Agent agentOrders;
+    private Agents agentOrders;
 
-    public Order() {
+    public Orders() {
         // Default Constructor
     }
 
@@ -59,19 +59,19 @@ public class Order {
         this.advanceAmount = advanceAmount;
     }
 
-    public Customer getCustomerOrders() {
+    public Customers getCustomerOrders() {
         return customerOrders;
     }
 
-    public void setCustomerOrders(Customer customerOrders) {
+    public void setCustomerOrders(Customers customerOrders) {
         this.customerOrders = customerOrders;
     }
 
-    public Agent getAgentOrders() {
+    public Agents getAgentOrders() {
         return agentOrders;
     }
 
-    public void setAgentOrders(Agent agentOrders) {
+    public void setAgentOrders(Agents agentOrders) {
         this.agentOrders = agentOrders;
     }
 
