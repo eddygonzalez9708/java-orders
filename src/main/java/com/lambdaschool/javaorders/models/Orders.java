@@ -1,6 +1,6 @@
 // ORDER
 
-// id primary key, not null Long
+// ORDNUM primary key, not null Long
 // ORDAMOUNT double
 // ADVANCEAMOUNT double
 // CUSTCODE Long foreign key (one customer to many orders) not null
@@ -18,68 +18,68 @@ import javax.persistence.*;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long ordnum;
 
     @Column(nullable = false)
-    private double ordAmount;
-    private double advanceAmount;
-    private String ordDescription;
+    private double ordamount;
+    private double advanceamount;
+    private String orddescription;
 
     @ManyToOne
     @JoinColumn(name = "custcode", nullable = false)
     @JsonIgnore
-    private Customers customerOrders;
+    private Customers customerorders;
 
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnore
-    private Agents agentOrders;
+    private Agents agentorders;
 
     public Orders() {
         // Default Constructor
     }
 
-    public long getId() {
-        return id;
+    public long getOrdnum() {
+        return ordnum;
     }
 
-    public double getOrdAmount() {
-        return ordAmount;
+    public double getOrdamount() {
+        return ordamount;
     }
 
-    public void setOrdAmount(double ordAmount) {
-        this.ordAmount = ordAmount;
+    public void setOrdamount(double ordamount) {
+        this.ordamount = ordamount;
     }
 
-    public double getAdvanceAmount() {
-        return advanceAmount;
+    public double getAdvanceamount() {
+        return advanceamount;
     }
 
-    public void setAdvanceAmount(double advanceAmount) {
-        this.advanceAmount = advanceAmount;
+    public void setAdvanceamount(double advanceamount) {
+        this.advanceamount = advanceamount;
     }
 
-    public Customers getCustomerOrders() {
-        return customerOrders;
+    public String getOrddescription() {
+        return orddescription;
     }
 
-    public void setCustomerOrders(Customers customerOrders) {
-        this.customerOrders = customerOrders;
+    public void setOrddescription(String orddescription) {
+        this.orddescription = orddescription;
     }
 
-    public Agents getAgentOrders() {
-        return agentOrders;
+    public Customers getCustomerorders() {
+        return customerorders;
     }
 
-    public void setAgentOrders(Agents agentOrders) {
-        this.agentOrders = agentOrders;
+    public void setCustomerorders(Customers customerorders) {
+        this.customerorders = customerorders;
     }
 
-    public String getOrdDescription() {
-        return ordDescription;
+    public Agents getAgentorders() {
+        return agentorders;
     }
 
-    public void setOrdDescription(String ordDescription) {
-        this.ordDescription = ordDescription;
+    public void setAgentorders(Agents agentorders) {
+        this.agentorders = agentorders;
     }
 }

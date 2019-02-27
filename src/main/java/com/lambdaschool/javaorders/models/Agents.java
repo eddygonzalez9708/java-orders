@@ -1,6 +1,6 @@
 // AGENT
 
-// id primary key, not null Long
+// AGENTCODE primary key, not null Long
 // AGENTNAME string
 // WORKINGAREA string
 // COMMISSION double
@@ -17,43 +17,43 @@ import java.util.Set;
 public class Agents {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long agentcode;
 
     @Column(nullable = false)
-    private String agentName;
-    private String workingArea;
+    private String agentname;
+    private String workingarea;
     private double commission;
     private String phone;
     private String country;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentCustomers")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agentcustomers")
     private Set<Customers> customers;
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentOrders")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentorders")
     private Set<Orders> orders;
 
     public Agents() {
         // Default Constructor
     }
 
-    public long getId() {
-        return id;
+    public long getAgentcode() {
+        return agentcode;
     }
 
-    public String getAgentName() {
-        return agentName;
+    public String getAgentname() {
+        return agentname;
     }
 
-    public void setAgentName(String agentName) {
-        this.agentName = agentName;
+    public void setAgentname(String agentname) {
+        this.agentname = agentname;
     }
 
-    public String getWorkingArea() {
-        return workingArea;
+    public String getWorkingarea() {
+        return workingarea;
     }
 
-    public void setWorkingArea(String workingArea) {
-        this.workingArea = workingArea;
+    public void setWorkingarea(String workingarea) {
+        this.workingarea = workingarea;
     }
 
     public double getCommission() {
@@ -78,5 +78,21 @@ public class Agents {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Set<Customers> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customers> customers) {
+        this.customers = customers;
+    }
+
+    public Set<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Orders> orders) {
+        this.orders = orders;
     }
 }
