@@ -26,7 +26,7 @@ public class Agents {
     private String phone;
     private String country;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agentcustomers")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentcustomers")
     private Set<Customers> customers;
 
     @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "agentorders")

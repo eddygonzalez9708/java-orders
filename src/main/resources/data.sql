@@ -42,6 +42,7 @@ INSERT INTO customers (custcode, custname, custcity, workingarea, custcountry, g
                    
 INSERT INTO orders (ordnum, ordamount, advanceamount, custcode, agentcode, orddescription)
             VALUES (200100, 1000.00, 600.00, 13, 3, 'SOD'),
+                   (200103, 1000.00, 600.00, 13, 3, 'SOD'),
                    (200110, 3000.00, 500.00, 19, 10, 'SOD'),
                    (200107, 4500.00, 900.00, 7, 10, 'SOD'),
                    (200112, 2000.00, 400.00, 16, 7, 'SOD'), 
