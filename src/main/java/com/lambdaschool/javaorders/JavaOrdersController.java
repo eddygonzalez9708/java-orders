@@ -41,7 +41,13 @@ public class JavaOrdersController {
 
     // /customer/order/{custcode} - Returns all orders for a particular customer based on custcode
 
+    @GetMapping("/customer/order/{custcode}")
+    public List<Object> getCustomerOrdersByCustCode(@PathVariable long custcode) {
+        return ordrepos.findCustomerOrdersByCustCode(custcode);
+    }
+
     // /agents - Returns all agents with their customers
+
 
     // /agents/orders - Return a list with the agents name and associated order number and order description
 
