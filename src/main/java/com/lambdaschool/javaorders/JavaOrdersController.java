@@ -1,5 +1,6 @@
 package com.lambdaschool.javaorders;
 
+import com.lambdaschool.javaorders.models.Agents;
 import com.lambdaschool.javaorders.repository.AgentRepository;
 import com.lambdaschool.javaorders.repository.CustomerRepository;
 import com.lambdaschool.javaorders.repository.OrderRepository;
@@ -32,7 +33,7 @@ public class JavaOrdersController {
         return custrepos.findCustomerOrders().stream().collect(Collectors.toList());
     }
 
-    // /customer/name/{custname} - Returns all orders for a particular based on name
+    // /customer/name/{custname} - Returns all orders based on a particular name
 
     @GetMapping("/customer/name/{custname}")
     public List<Object> getCustomerOrdersByName(@PathVariable String custname) {
@@ -48,6 +49,10 @@ public class JavaOrdersController {
 
     // /agents - Returns all agents with their customers
 
+    @GetMapping("/agents")
+    public List<Agents> getAllAgents() {
+        return agentrepos.findAll().stream().collect(Collectors.toList());
+    }
 
     // /agents/orders - Return a list with the agents name and associated order number and order description
 
