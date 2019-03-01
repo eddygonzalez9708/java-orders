@@ -1,15 +1,13 @@
 package com.lambdaschool.javaorders;
 
 import com.lambdaschool.javaorders.models.Agents;
+import com.lambdaschool.javaorders.models.Customers;
 import com.lambdaschool.javaorders.repository.AgentRepository;
 import com.lambdaschool.javaorders.repository.CustomerRepository;
 import com.lambdaschool.javaorders.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,6 +60,13 @@ public class JavaOrdersController {
     }
 
     // /customer/{custcode} - Deletes a customer based off of their custcode and deletes all their associated orders
+
+    @DeleteMapping("/customer/{custcode}")
+    public List<Customers> deleteCustomer(@PathVariable long custcode) {
+        List<Customers> rmCustomer = custrepos.findById(custcode).stream().collect(Collectors.toList());
+        custrepos.deleteById(custcode);
+        return rmCustomer;
+    }
 
     // /agents/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
 }
