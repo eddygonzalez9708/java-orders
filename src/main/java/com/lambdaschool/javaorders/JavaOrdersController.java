@@ -6,6 +6,7 @@ import com.lambdaschool.javaorders.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,10 @@ public class JavaOrdersController {
 
     // /customer/name/{custname} - Returns all orders for a particular based on name
 
+    @GetMapping("/customer/name/{custname}")
+    public List<Object> getCustomerOrdersByName(@PathVariable String custname) {
+        return ordrepos.findCustomerOrdersByName(custname);
+    }
 
     // /customer/order/{custcode} - Returns all orders for a particular customer based on custcode
 
