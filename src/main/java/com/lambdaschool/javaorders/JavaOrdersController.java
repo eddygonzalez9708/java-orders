@@ -63,10 +63,28 @@ public class JavaOrdersController {
 
     @DeleteMapping("/customer/{custcode}")
     public List<Customers> deleteCustomer(@PathVariable long custcode) {
-        List<Customers> rmCustomer = custrepos.findById(custcode).stream().collect(Collectors.toList());
+        List<Customers> rmCustomer = custrepos
+                .findById(custcode)
+                .stream()
+                .collect(Collectors.toList());
         custrepos.deleteById(custcode);
         return rmCustomer;
     }
 
     // /agents/{agentcode} - Deletes an agent if they are not assigned to a customer or order (Stretch Goal)
+
+    @DeleteMapping("/agents/{agentcode}")
+    public String deleteAgent(@PathVariable long agentcode) {
+        Agents agent = agentrepos
+                .findById(agentcode)
+                .stream()
+                .collect(Collectors.toList()).get(0);
+
+        if (agent.getCustomers().size() == 0 || agent.getOrders().size() == 0) {
+            return "Agent cannot be deleted if they are assigned to a customer or order.";
+        } else {
+            agentrepos.deleteById(agentcode);
+            return "Agent was successfully deleted";
+        }
+    }
 }
